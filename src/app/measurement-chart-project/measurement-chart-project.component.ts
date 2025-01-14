@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { DataService } from '../data.service';
+import { DataPointService } from '../service/data-point.service';
 
 @Component({
   selector: 'app-measurement-chart-project',
@@ -8,6 +9,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./measurement-chart-project.component.css'],
 })
 export class MeasurementChartComponent implements OnInit {
+  dropdownData: any = [];
   Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
     title: {
@@ -31,7 +33,7 @@ export class MeasurementChartComponent implements OnInit {
   startDate: string = '';
   endDate: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private dataPointService: DataPointService ) { }
 
   ngOnInit(): void {
     this.dataService.fetchAndStoreDropdownData();
@@ -39,7 +41,11 @@ export class MeasurementChartComponent implements OnInit {
       console.log('Dropdown Data:', data);
       this.assetIds = Object.keys(data);
     });
-  }  
+
+    this.dataPointService.getDropdownData().subscribe((data: any) => {
+      this.dropdownData = data;
+    });
+  }
 
   onAssetChange(): void {
     const dropdownData = this.dataService.dropdownData;

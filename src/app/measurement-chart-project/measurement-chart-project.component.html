@@ -1,6 +1,11 @@
 <div>
-  <h1>Highchart Visualization of Postgres Database</h1>
   <div>
+    <label for="assetId">Measurement item</label>
+    <select>
+      <option *ngFor="let item of dropdownData" [value]="item">
+        {{ item.record_timestamp }}
+      </option>
+    </select>
     <select [(ngModel)]="selectedAssetId" (change)="onAssetChange()">
       <option *ngFor="let assetId of assetIds" [value]="assetId">
         {{ assetId }}
@@ -13,11 +18,7 @@
       </option>
     </select>
 
-    <input
-      type="date"
-      [(ngModel)]="startDate"
-      placeholder="Select Start Date"
-    />
+    <input type="date" [(ngModel)]="startDate" placeholder="Select Start Date" />
     <input type="date" [(ngModel)]="endDate" placeholder="Select End Date" />
     <button (click)="onFilterChange()">Fetch Data</button>
   </div>
