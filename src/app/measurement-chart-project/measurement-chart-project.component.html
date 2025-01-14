@@ -1,27 +1,24 @@
+<h1></h1>
+<p></p>
+
 <div>
-  <div>
-    <label for="assetId">Measurement item</label>
-    <select>
-      <option *ngFor="let item of dropdownData" [value]="item">
-        {{ item.record_timestamp }}
-      </option>
-    </select>
-    <select [(ngModel)]="selectedAssetId" (change)="onAssetChange()">
-      <option *ngFor="let assetId of assetIds" [value]="assetId">
-        {{ assetId }}
-      </option>
-    </select>
+  <label for="asset">Asset ID:</label>
+  <select id="asset" [(ngModel)]="selectedAssetId" (change)="onAssetChange()">
+    <option *ngFor="let asset of assetIds" [value]="asset">{{ asset }}</option>
+  </select>
 
-    <select [(ngModel)]="selectedMeasId">
-      <option *ngFor="let measId of filteredMeasIds" [value]="measId">
-        {{ measId }}
-      </option>
-    </select>
+  <label for="meas">Meas ID:</label>
+  <select id="meas" [(ngModel)]="selectedMeasId">
+    <option *ngFor="let meas of filteredMeasIds" [value]="meas">{{ meas }}</option>
+  </select>
 
-    <input type="date" [(ngModel)]="startDate" placeholder="Select Start Date" />
-    <input type="date" [(ngModel)]="endDate" placeholder="Select End Date" />
-    <button (click)="onFilterChange()">Fetch Data</button>
-  </div>
+  <label for="start">Start Date:</label>
+  <input id="start" type="date" [(ngModel)]="startDate" />
 
-  <div id="container" style="height: 400px"></div>
+  <label for="end">End Date:</label>
+  <input id="end" type="date" [(ngModel)]="endDate" />
+
+  <button (click)="onFilterChange()">Fetch Data</button>
 </div>
+
+<div id="container" style="width: 100%; height: 400px;"></div>

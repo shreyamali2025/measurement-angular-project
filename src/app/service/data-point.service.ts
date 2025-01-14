@@ -1,19 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataPointService {
-  private readonly url = 'http://localhost:3000/api/data?asset_id=HMI_MEASUREMENT&meas_id=PPCShutDown&start_date=2025-01-08&end_date=2025-01-08';
-  
-  constructor(private http: HttpClient) { }
+  private readonly dropdownUrl = 'http://localhost:3000/api/dropdown';
+  private readonly dataUrl = 'http://localhost:3000/api/data';
+
+  constructor(private http: HttpClient) {}
 
   getDropdownData() {
-    return this.http.get(this.url).pipe(
+    return this.http.get(this.dropdownUrl).pipe(
       map((data: any) => {
         console.log('Dropdown Data:', data);
+        return data;
+      })
+    );
+  }
+
+  getFilteredData(params: any) {
+    return this.http.get(this.dataUrl, { params }).pipe(
+      map((data: any) => {
+        console.log('Filtered Data:', data);
         return data;
       })
     );
