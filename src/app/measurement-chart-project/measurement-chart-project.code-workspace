@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "../../../node_modules"
+		},
+		{
+			"path": "../../../public"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../node_modules/@angular/animations"
+		},
+		{
+			"path": "../../../node_modules/@angular/compiler-cli"
+		},
+		{
+			"path": "../../../node_modules/@angular/forms"
+		},
+		{
+			"path": "../../../node_modules/@angular/platform-browser"
+		},
+		{
+			"path": "../../../node_modules/@angular/platform-browser-dynamic"
+		},
+		{
+			"path": "../../../node_modules/@angular/platform-server"
+		},
+		{
+			"path": "../../../node_modules/@angular/router"
+		}
+	],
+	"settings": {}
+}

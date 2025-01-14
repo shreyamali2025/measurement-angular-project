@@ -1,0 +1,26 @@
+<div>
+  <h1>Highchart Visualization of Postgres Database</h1>
+  <div>
+    <select [(ngModel)]="selectedAssetId" (change)="onAssetChange()">
+      <option *ngFor="let assetId of assetIds" [value]="assetId">
+        {{ assetId }}
+      </option>
+    </select>
+
+    <select [(ngModel)]="selectedMeasId">
+      <option *ngFor="let measId of filteredMeasIds" [value]="measId">
+        {{ measId }}
+      </option>
+    </select>
+
+    <input
+      type="date"
+      [(ngModel)]="startDate"
+      placeholder="Select Start Date"
+    />
+    <input type="date" [(ngModel)]="endDate" placeholder="Select End Date" />
+    <button (click)="onFilterChange()">Fetch Data</button>
+  </div>
+
+  <div id="container" style="height: 400px"></div>
+</div>
